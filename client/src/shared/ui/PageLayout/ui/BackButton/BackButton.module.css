@@ -1,0 +1,22 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  width: 100px;
+  height: 40px;
+
+  color: var(--font-color-title);
+  font-family: var(--font-family-title);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+
+  cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  height: 10px;
+  transform: rotate(-90deg);
+}

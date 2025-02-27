@@ -1,0 +1,76 @@
+:root {
+  --bg-color-surface-primary: #fafafa;
+  --bg-color-surface: #ffffff;
+  --bg-color-accent: #2ee5ac;
+  --bg-color-secondary: #7d7d7d;
+
+  --border-color: #ebebeb;
+
+  --font-color-title: #222222;
+  --font-color-title-secondary: #999999;
+  --font-color-primary: #474747;
+  --font-color-secondary: #5c5c5c;
+  --font-color-placeholder: #d1d1d1;
+  --font-color-inverse: #ffffff;
+
+  --font-color-green: #1bda9d;
+  --font-color-orange: #ff8346;
+  --font-color-red: #fe4848;
+
+  --font-family-title: "Montserrat", Arial, sans-serif;
+  --font-family-primary: "Roboto", Arial, sans-serif;
+
+  --font-size-title: 26px;
+  --font-size-subtitle: 14px;
+  --font-size-title-secondary: 11px;
+  --font-size-primary: 13px;
+  --font-size-secondary: 12px;
+  --font-size-placeholder: 14px;
+
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-primary);
+  line-height: 1.2;
+  font-weight: 400;
+
+  color: var(--font-color-primary);
+  background-color: var(--bg-color-surface-primary);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../shared/lib/fonts/Montserrat/Montserrat-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../shared/lib/fonts/Montserrat/Montserrat-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../shared/lib/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../shared/lib/fonts/Roboto/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
