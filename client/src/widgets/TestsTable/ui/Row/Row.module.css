@@ -1,0 +1,59 @@
+.row {
+  --row-border-radius: 4px;
+
+  display: grid;
+
+  position: relative;
+  box-sizing: border-box;
+  height: 70px;
+  margin-bottom: 5px;
+
+  cursor: pointer;
+  border-radius: var(--row-border-radius);
+  background-color: var(--bg-color-surface);
+
+  transition: box-shadow 0.3s ease-in-out;
+  will-change: box-shadow;
+  padding: 0 12px;
+}
+
+.row:hover {
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.leftBorder {
+  display: block;
+
+  box-sizing: border-box;
+  width: 4px;
+  height: 100%;
+  border-top-left-radius: var(--row-border-radius);
+  border-bottom-left-radius: var(--row-border-radius);
+
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+
+  font-size: var(--font-size-secondary);
+  color: var(--font-color-secondary);
+}
+
+.cell_name {
+  font-size: var(--font-size-primary);
+  color: var(--font-color-primary);
+  font-weight: 500;
+}
+
+.cell_status {
+  font-weight: 500;
+}
+
+.cell_withButton button {
+  margin-left: auto;
+}
