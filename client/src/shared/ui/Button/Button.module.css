@@ -1,0 +1,23 @@
+.button {
+  padding: 8px 28px;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  color: var(--font-color-inverse);
+  font-size: var(--font-size-secondary);
+  font-family: var(--font-family-title);
+  font-weight: 500;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.button_primary {
+  background-color: var(--bg-color-accent);
+}
+
+.button_secondary {
+  background-color: var(--bg-color-secondary);
+}

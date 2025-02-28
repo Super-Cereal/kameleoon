@@ -1,9 +1,11 @@
+import { useRef } from "react";
 import cx from "classnames";
 
 import type { IColumn, ISortConfig } from "../../lib/types";
 import { useSort } from "../../lib/useSort";
 import { useFilter } from "../../lib/useFilter";
 
+import { EmptyState } from "../EmptyState/EmptyState";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { Row } from "../Row/Row";
 import { HeadRow } from "../HeadRow/HeadRow";
@@ -48,10 +50,15 @@ export const Table = <ITableItem extends object>({
     handleSortChange,
   } = useSort(filteredItems, columnsConfig);
 
-  return (
-    <div className={cx(styles.tableContainer, classNames?.container)}>
-      {withFilterBy && <SearchBar value={filterTextView} onChange={handleFilterChange} className={styles.searchBar} />}
+  const filterInputRef = useRef<HTMLInputElement>(null);
 
+  let content = null;
+  if (!items.length) {
+    content = "loading...";
+  } else if (!filteredAndSortedItems.length) {
+    content = <EmptyState filterInputRef={filterInputRef} handleFilterChange={handleFilterChange} />;
+  } else {
+    content = (
       <div role="table" className={cx(styles.table, classNames?.table)}>
         <div role="rowgroup">
           <HeadRowComponent
@@ -66,6 +73,21 @@ export const Table = <ITableItem extends object>({
           ))}
         </div>
       </div>
+    );
+  }
+
+  return (
+    <div className={cx(styles.tableContainer, classNames?.container)}>
+      {withFilterBy && (
+        <SearchBar
+          inputRef={filterInputRef}
+          value={filterTextView}
+          onChange={handleFilterChange}
+          className={styles.searchBar}
+        />
+      )}
+
+      {content}
     </div>
   );
 };
