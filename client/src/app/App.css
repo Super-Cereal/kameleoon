@@ -5,6 +5,7 @@
   --bg-color-secondary: #7d7d7d;
 
   --border-color: #ebebeb;
+  --outline-color: rgb(0, 95, 204);
 
   --font-color-title: #222222;
   --font-color-title-secondary: #999999;
@@ -43,8 +44,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("../shared/lib/fonts/Montserrat/Montserrat-SemiBold.ttf")
-    format("truetype");
+  src: url("../shared/lib/fonts/Montserrat/Montserrat-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -52,8 +52,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("../shared/lib/fonts/Montserrat/Montserrat-Bold.ttf")
-    format("truetype");
+  src: url("../shared/lib/fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

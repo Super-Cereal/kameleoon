@@ -1,0 +1,31 @@
+.headRow {
+  display: flex;
+}
+
+.headCell {
+  text-align: left;
+  font-weight: 500;
+  font-size: var(--font-size-title-secondary);
+  color: var(--font-color-title-secondary);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+}
+
+.button_sortable {
+  line-height: 1.5;
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+.icon {
+  width: 10px;
+  height: 8px;
+  margin-left: 8px;
+}
+
+.icon_asc {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,33 @@
+.container {
+  position: relative;
+
+  font-size: var(--font-size-placeholder);
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  /* Место под подпись справа и иконку слева */
+  padding: 16px 100px 16px 36px;
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+
+  font-size: inherit;
+
+  background-color: var(--bg-color-surface);
+}
+
+.searchBar::placeholder {
+  color: var(--font-color-placeholder);
+}
+
+.icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1em;
+}

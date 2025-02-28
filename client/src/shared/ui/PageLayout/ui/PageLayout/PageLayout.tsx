@@ -1,15 +1,11 @@
-import type { ReactNode } from "react";
-
 import { BackButton } from "../BackButton/BackButton";
 
 import styles from "./PageLayout.module.css";
 
-interface Props {
+interface IProps extends React.PropsWithChildren {
   title: string;
   subtitle?: string;
   hasBackButton?: boolean;
-
-  children: ReactNode;
 }
 
 export const PageLayout = ({
@@ -18,7 +14,7 @@ export const PageLayout = ({
   hasBackButton,
 
   children,
-}: Props) => {
+}: IProps) => {
   return (
     <div className={styles.layout}>
       <header className={styles.header}>
