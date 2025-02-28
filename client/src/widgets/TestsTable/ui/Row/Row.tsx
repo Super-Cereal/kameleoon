@@ -23,8 +23,23 @@ export const Row = React.memo(({ item, gridTemplateColumns }: IProps) => {
 
   const buttonProps =
     item.status === "DRAFT"
-      ? ({ view: "secondary", onClick: () => navigate(`/finalize/${item.id}`), children: "Finalize" } as const)
-      : ({ view: "primary", onClick: () => navigate(`/results/${item.id}`), children: "Results" } as const);
+      ? ({
+          view: "secondary",
+          onClick: (e: React.MouseEvent) => {
+            // Используем stopPropagation, потому что onClick весит на кнопке и на ее родителе
+            e.stopPropagation();
+            navigate(`/finalize/${item.id}`);
+          },
+          children: "Finalize",
+        } as const)
+      : ({
+          view: "primary",
+          onClick: (e: React.MouseEvent) => {
+            e.stopPropagation();
+            navigate(`/results/${item.id}`);
+          },
+          children: "Results",
+        } as const);
 
   return (
     <div role="row" onClick={buttonProps.onClick} style={{ gridTemplateColumns }} className={styles.row}>
