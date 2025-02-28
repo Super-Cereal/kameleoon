@@ -1,4 +1,5 @@
-import { getTests, type ITest, getSites, type ISite } from "../api";
+import { getTests, type ITest } from "@/entities/tests";
+import { getSites, type ISite } from "@/entities/sites";
 
 export interface IRow extends ITest {
   site: ISite | undefined;

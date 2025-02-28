@@ -1,16 +1,10 @@
-import { useEffect, useState } from "react";
+import { useData } from "@/shared/api/requests";
 
 import { columns } from "./columns";
-import { getRows, type IRow } from "./getRows";
+import { getRows } from "./getRows";
 
 export const useRowsAndColumns = () => {
-  const [rows, setRows] = useState<IRow[] | null>(null);
-
-  useEffect(() => {
-    if (!rows) {
-      getRows().then((rows) => setRows(rows));
-    }
-  }, [rows]);
+  const { data: rows } = useData(getRows, []);
 
   return { rows, columns };
 };
