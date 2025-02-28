@@ -6,11 +6,6 @@ You need to create your own local copy and work with it via the API.
 
 ### How to work
 
-Clone a repository
-```bash
-git clone git@development.kameleoon.net:oivanov/frontend-interview-task-api.git
-```
-
 Install dependencies
 ```bash
 npm install

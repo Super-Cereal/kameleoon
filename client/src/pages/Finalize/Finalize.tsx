@@ -15,26 +15,20 @@ export const Finalize = () => {
     error: siteError,
   } = useData(test?.siteId && (() => getSite(test?.siteId)), [test?.siteId]);
 
-  const isLoading = testLoading || siteLoading;
-  const error = testError || siteError;
-
-  let content;
-  if (isLoading) {
-    content = <div>Loading...</div>;
-  } else if (error) {
-    content = <div>Error: {error}</div>;
-  } else {
-    content = (
-      <>
-        {test && <div>Test: {JSON.stringify(test)}</div>}
-        {site && <div>Site: {JSON.stringify(site)}</div>}
-      </>
-    );
-  }
+  const getContent = (data: unknown, isLoading: boolean, error: string | null) => {
+    if (isLoading) {
+      return <span>Loading...</span>;
+    } else if (error) {
+      return <span>Error: {error}</span>;
+    } else {
+      return data ? <span>{JSON.stringify(data)}</span> : null;
+    }
+  };
 
   return (
     <PageLayout title="Finalize" subtitle="Spring promotion" hasBackButton>
-      {content}
+      Test: {getContent(test, testLoading, testError)}
+      Site: {getContent(site, siteLoading, siteError)}
     </PageLayout>
   );
 };
