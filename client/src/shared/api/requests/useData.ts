@@ -4,7 +4,7 @@ type Falsy = false | 0 | null | undefined;
 
 export const useData = <T>(request: (() => Promise<T>) | Falsy, defs: Array<unknown>) => {
   const [data, setData] = useState<T | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

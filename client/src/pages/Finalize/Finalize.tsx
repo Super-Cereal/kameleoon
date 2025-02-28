@@ -28,6 +28,7 @@ export const Finalize = () => {
   return (
     <PageLayout title="Finalize" subtitle="Spring promotion" hasBackButton>
       Test: {getContent(test, testLoading, testError)}
+      <br />
       Site: {getContent(site, siteLoading, siteError)}
     </PageLayout>
   );

@@ -45,3 +45,5 @@ cd ../server && npm start
 `shared/ui/Table` – shared component for displaying a table. It can sort and filter data thanks to custom `useSort` and `useFilter` hooks. Hooks use `useTransition`, `useMemo` and `useCallback` to optimize rendering.
 
 `widgets/TestsTable` – component that uses the `shared/ui/Table`. It requests tests and websites, adapts them for the table and transfers them with props. It also provides custom memoized components `Row` and `HeadRow`, which are used in the table.
+
+`shared/api/requests/useData` – custom hook for fetching data from the server.

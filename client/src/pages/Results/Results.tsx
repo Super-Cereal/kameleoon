@@ -28,6 +28,7 @@ export const Results = () => {
   return (
     <PageLayout title="Results" subtitle="Order basket redesing" hasBackButton>
       Test: {getContent(test, testLoading, testError)}
+      <br />
       Site: {getContent(site, siteLoading, siteError)}
     </PageLayout>
   );

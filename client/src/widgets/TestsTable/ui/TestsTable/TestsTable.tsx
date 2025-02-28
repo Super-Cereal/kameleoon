@@ -1,11 +1,12 @@
 import { Table } from "@/shared/ui/Table";
+import { useData } from "@/shared/api/requests/useData";
 
-import { useRowsAndColumns } from "../../model";
 import { HeadRow } from "../HeadRow/HeadRow";
 import { Row } from "../Row/Row";
+import { getRows, columns } from "../../model";
 
 export const TestsTable = () => {
-  const { rows, columns } = useRowsAndColumns();
+  const { data: rows } = useData(getRows, []);
 
   // Размеры столбцов таблицы
   // Столбцов не так много, поэтому не использую useMemo
