@@ -15,6 +15,7 @@ export const TestsTable = () => {
   return (
     <Table
       items={rows || []}
+      entityName="test"
       primaryKey="id"
       columnsConfig={columns}
       withFilterBy="name"

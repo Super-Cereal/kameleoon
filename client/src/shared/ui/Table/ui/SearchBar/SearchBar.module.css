@@ -31,3 +31,12 @@
   transform: translateY(-50%);
   height: 1em;
 }
+
+.caption {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1em;
+  color: var(--font-color-placeholder);
+}

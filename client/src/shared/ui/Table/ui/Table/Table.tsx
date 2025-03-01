@@ -17,6 +17,7 @@ interface IProps<ITableItem> {
   primaryKey: keyof ITableItem;
   columnsConfig: IColumn<ITableItem>[];
   withFilterBy?: keyof ITableItem;
+  entityName?: string;
   classNames?: {
     container?: string;
     table?: string;
@@ -38,6 +39,7 @@ export const Table = <ITableItem extends object>({
   primaryKey,
   columnsConfig,
   withFilterBy,
+  entityName,
   classNames,
 
   RowComponent = Row,
@@ -76,10 +78,15 @@ export const Table = <ITableItem extends object>({
     );
   }
 
+  const searchBarCaption = `${filteredAndSortedItems.length} ${entityName}${
+    filteredAndSortedItems.length === 1 ? "" : "s"
+  }`;
+
   return (
     <div className={cx(styles.tableContainer, classNames?.container)}>
       {withFilterBy && (
         <SearchBar
+          caption={searchBarCaption}
           inputRef={filterInputRef}
           value={filterTextView}
           onChange={handleFilterChange}
