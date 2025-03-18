@@ -7,6 +7,7 @@ import { Results } from "@/pages/Results";
 import "./App.css";
 
 function App() {
+  const a = 1;
   return (
     <BrowserRouter>
       <Routes>
