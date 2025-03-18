@@ -6,7 +6,7 @@
   "scripts": {
     "start": "vite",
     "build": "tsc -b && vite build",
-    "elint:check": "eslint ./src",
+    "eslint:check": "eslint ./src",
     "type-check": "tsc -p ./tsconfig.app.json"
   },
   "dependencies": {
