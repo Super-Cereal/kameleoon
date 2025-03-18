@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Dashboard } from "@/pages/Dashboard";
+import { Dashboard } from "@/pages/Dashboard4";
 import { Finalize } from "@/pages/Finalize";
 import { Results } from "@/pages/Results";
 
 import "./App.css";
 
 function App() {
+  const a: Function = () => {};
+
   return (
     <BrowserRouter>
       <Routes>
