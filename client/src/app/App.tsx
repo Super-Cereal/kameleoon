@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Dashboard } from "@/pages/Dashboard4";
+import { Dashboard } from "@/pages/Dashboard";
 import { Finalize } from "@/pages/Finalize";
 import { Results } from "@/pages/Results";
 

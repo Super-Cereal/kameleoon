@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Lint
+      - name: Lint and type check
         working-directory: ./client
         run: |
           npm install
