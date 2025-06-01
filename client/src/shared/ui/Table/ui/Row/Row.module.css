@@ -12,7 +12,6 @@
   background-color: #ffffff;
 
   transition: box-shadow 0.3s ease-in-out;
-  will-change: box-shadow;
   padding: 0 12px;
 }
 
@@ -25,7 +24,7 @@
   display: block;
 
   box-sizing: border-box;
-  width: 4px;
+  width: var(--row-border-radius);
   height: 100%;
   border-top-left-radius: var(--row-border-radius);
   border-bottom-left-radius: var(--row-border-radius);

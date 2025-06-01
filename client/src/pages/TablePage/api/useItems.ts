@@ -18,7 +18,7 @@ export const useItems = (): IItem[] => {
     const author = authors.find((author) => author.id === record.authorId);
 
     if (!author) {
-      throw Error("Author not found");
+      throw Error("Автор для пластинки не найден");
     }
 
     return {

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo, memo } from "react";
 
 import type { IColumn } from "../../lib/types";
 import styles from "./Row.module.css";
@@ -15,7 +15,6 @@ const colors = [
   "#7B2BFF", // Фиолетовый (креативный, мистический)
   "#00B4FF", // Ярко-голубой (сочный, летний)
   "#FF8C00", // Оранжевый (жизнерадостный, энергичный)
-  "#FF1493",
 ];
 
 const RowComponent = <TableItem extends object>({ item, columnsConfig }: IProps<TableItem>) => {
@@ -37,4 +36,4 @@ const RowComponent = <TableItem extends object>({ item, columnsConfig }: IProps<
 };
 
 // React.memo позволит избежать лишних рендеров при сортировке
-export const Row = React.memo(RowComponent) as typeof RowComponent;
+export const Row = memo(RowComponent) as typeof RowComponent;

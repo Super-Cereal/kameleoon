@@ -6,25 +6,30 @@ import { HeadRow } from "../HeadRow/HeadRow";
 
 import styles from "./Table.module.css";
 import { Loading } from "@/shared/ui/Loading";
+import { RowEditable } from "../RowEditable/RowEditable";
 
 interface IProps<ITableItem> {
   items: ITableItem[];
   primaryKey: keyof ITableItem;
   columnsConfig: IColumn<ITableItem>[];
-  withFilterBy?: keyof ITableItem;
-  entityName?: string;
-  classNames?: {
-    container?: string;
-    table?: string;
-  };
+  tableTitle: string;
+  onFormSubmit: (data: ITableItem) => void;
+  formTitle: string;
 }
 
-export const Table = <ITableItem extends object>({ items, primaryKey, columnsConfig }: IProps<ITableItem>) => {
+export const Table = <ITableItem extends object>({
+  items,
+  primaryKey,
+  columnsConfig,
+  tableTitle,
+  onFormSubmit,
+  formTitle,
+}: IProps<ITableItem>) => {
   const { sortedItems, sortConfig, handleSortChange } = useSort(items);
 
   if (!items.length) {
     return (
-      <div className={styles.tableContainer}>
+      <div className={styles.loading}>
         <Loading />
       </div>
     );
@@ -32,6 +37,14 @@ export const Table = <ITableItem extends object>({ items, primaryKey, columnsCon
 
   return (
     <div className={styles.table}>
+      <RowEditable
+        className={styles.rowEditable}
+        formTitle={formTitle}
+        columnsConfig={columnsConfig}
+        onFormSubmit={onFormSubmit}
+      />
+
+      <h3 className={styles.title}>{tableTitle}</h3>
       <HeadRow columnsConfig={columnsConfig} sortConfig={sortConfig} handleSortChange={handleSortChange} />
 
       {sortedItems.map((item) => (

@@ -4,8 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 export interface IAuthor {
   id: number;
   name: string;
-  genre: string;
-  country: string;
+  genre?: string;
+  country?: string;
+  activeYears?: string;
 }
 
 export const useAuthorsQuery = () => {

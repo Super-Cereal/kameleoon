@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 export interface IRecord {
   id: number;
   name: string;
-  description: string;
+  description?: string;
   price: number;
   year: number;
   authorId: number;

@@ -9,7 +9,7 @@
   font-weight: 600;
   font-size: 11px;
   line-height: 1.5;
-  color: #FF1493;
+  color: var(--accent-color);
 }
 
 .button {
