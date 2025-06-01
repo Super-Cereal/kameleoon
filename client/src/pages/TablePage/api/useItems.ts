@@ -6,25 +6,24 @@ export interface IItem extends IRecord {
   authorGenre: IAuthor["genre"];
 }
 
-export const useItems = (): IItem[] => {
-  const { data: authors } = useAuthorsQuery();
-  const { data: records } = useRecordsQuery();
+export const useItems = (): { items: IItem[]; isLoading: boolean } => {
+  const { data: authors, isFetching: isAuthorsLoading } = useAuthorsQuery();
+  const { data: records, isFetching: isRecordsLoading } = useRecordsQuery();
 
   if (!authors || !records) {
-    return [];
+    return { items: [], isLoading: true };
   }
 
-  return records.map((record) => {
-    const author = authors.find((author) => author.id === record.authorId);
+  return {
+    items: records.map((record) => {
+      const author = authors.find((author) => author.id === record.authorId);
 
-    if (!author) {
-      throw Error("Автор для пластинки не найден");
-    }
-
-    return {
-      ...record,
-      authorName: author.name,
-      authorGenre: author.genre,
-    };
-  });
+      return {
+        ...record,
+        authorName: author?.name || "",
+        authorGenre: author?.genre || "",
+      };
+    }),
+    isLoading: isAuthorsLoading || isRecordsLoading,
+  };
 };

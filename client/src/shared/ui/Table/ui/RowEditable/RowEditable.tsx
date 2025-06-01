@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import type { IColumn } from "../../lib/types";
 import styles from "./RowEditable.module.css";
+import { Loading } from "@/shared/ui/Loading";
 
 interface IProps<TableItem> {
   className: string;
   columnsConfig: IColumn<TableItem>[];
+  isFormLoading: boolean;
   onFormSubmit: (data: TableItem) => void;
   formTitle: string;
 }
@@ -12,6 +14,7 @@ interface IProps<TableItem> {
 export const RowEditable = <TableItem extends object>({
   className,
   columnsConfig,
+  isFormLoading,
   onFormSubmit,
   formTitle,
 }: IProps<TableItem>) => {
@@ -78,6 +81,7 @@ export const RowEditable = <TableItem extends object>({
 
       <div className={styles.buttonBlock}>
         <input className={styles.button} type="submit" value="Отправить" />
+        {isFormLoading && <Loading size={20} />}
         {message && <p className={styles.message}>{message}</p>}
       </div>
     </form>

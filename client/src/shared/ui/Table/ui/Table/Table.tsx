@@ -10,36 +10,33 @@ import { RowEditable } from "../RowEditable/RowEditable";
 
 interface IProps<ITableItem> {
   items: ITableItem[];
+  isLoading: boolean;
   primaryKey: keyof ITableItem;
   columnsConfig: IColumn<ITableItem>[];
   tableTitle: string;
+  isFormLoading: boolean;
   onFormSubmit: (data: ITableItem) => void;
   formTitle: string;
 }
 
 export const Table = <ITableItem extends object>({
   items,
+  isLoading,
   primaryKey,
   columnsConfig,
   tableTitle,
+  isFormLoading,
   onFormSubmit,
   formTitle,
 }: IProps<ITableItem>) => {
   const { sortedItems, sortConfig, handleSortChange } = useSort(items);
-
-  if (!items.length) {
-    return (
-      <div className={styles.loading}>
-        <Loading />
-      </div>
-    );
-  }
 
   return (
     <div className={styles.table}>
       <RowEditable
         className={styles.rowEditable}
         formTitle={formTitle}
+        isFormLoading={isFormLoading}
         columnsConfig={columnsConfig}
         onFormSubmit={onFormSubmit}
       />
@@ -50,6 +47,12 @@ export const Table = <ITableItem extends object>({
       {sortedItems.map((item) => (
         <Row key={String(item[primaryKey])} item={item} columnsConfig={columnsConfig} />
       ))}
+
+      {isLoading && (
+        <div className={styles.loading}>
+          <Loading />
+        </div>
+      )}
     </div>
   );
 };

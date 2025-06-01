@@ -1,19 +1,19 @@
 import { Table } from "@/shared/ui/Table";
 
-import { useItems, type IItem } from "../api/useItems";
+import { useItems } from "../api/useItems";
+import { useCreateItem } from "../api/useCreateItem";
 
 export const TablePage = () => {
-  const items = useItems();
-
-  const onFormSubmit = (data: IItem) => {
-    console.log(data);
-  };
+  const { items, isLoading: isItemsLoading } = useItems();
+  const { createItem, isLoading: isCreateItemLoading } = useCreateItem();
 
   return (
     <Table
       items={items}
+      isLoading={isItemsLoading}
+      isFormLoading={isCreateItemLoading}
       primaryKey="id"
-      onFormSubmit={onFormSubmit}
+      onFormSubmit={createItem}
       formTitle="Добавить новую пластинку в коллекцию!"
       tableTitle="Моя сортируемая коллекция пластинок!"
       columnsConfig={[
