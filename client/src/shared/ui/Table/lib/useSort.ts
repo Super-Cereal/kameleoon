@@ -1,16 +1,12 @@
-import { useState, useTransition, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo } from "react";
 
-import type { ISortConfig, IColumn } from "./types";
+export interface ISortConfig<ITableItem> {
+  key: keyof ITableItem;
+  direction: "asc" | "desc";
+}
 
-export const useSort = <ITableItem extends object>(
-  items: ITableItem[],
-  columnsConfig: IColumn<ITableItem>[]
-) => {
-  // Значение для перехода
+export const useSort = <ITableItem extends object>(items: ITableItem[]) => {
   const [sortConfig, setSortConfig] = useState<ISortConfig<ITableItem> | null>(null);
-  // Значение для отображения
-  const [sortConfigView, setSortConfigView] = useState<typeof sortConfig>(null);
-  const startSortTransition = useTransition()[1];
 
   const handleSortChange = useCallback(
     (key: keyof ITableItem) => {
@@ -24,24 +20,15 @@ export const useSort = <ITableItem extends object>(
         newDirection = "asc";
       }
 
-      // Меняем отображение и запускаем несрочный переход для сортировки
-      const newSortConfig = newDirection ? { key, direction: newDirection } : null;
-      setSortConfigView(newSortConfig);
-      startSortTransition(() => {
-        setSortConfig(newSortConfig);
-      });
+      setSortConfig(newDirection ? { key, direction: newDirection } : null);
     },
-    [sortConfig, startSortTransition]
+    [sortConfig]
   );
 
   const sortedItems = useMemo(() => {
-    // Копируем, чтобы не изменять исходный и возвращать из useMemo всегда новый
+    // Копируем, чтобы не изменять исходный массив
     const newItems = [...items];
     if (!sortConfig) return newItems;
-
-    const compareFn = columnsConfig.find((column) => column.key === sortConfig.key)?.sortCompareFn;
-    if (compareFn)
-      return newItems.sort(sortConfig.direction === "asc" ? compareFn : (a, b) => compareFn(b, a));
 
     return newItems.sort((a, b) => {
       const aValue = a[sortConfig.key];
@@ -51,7 +38,7 @@ export const useSort = <ITableItem extends object>(
       if (aValue > bValue) return sortConfig.direction === "asc" ? 1 : -1;
       return 0;
     });
-  }, [sortConfig, items, columnsConfig]);
+  }, [sortConfig, items]);
 
-  return { sortedItems, sortConfigView, handleSortChange };
+  return { sortedItems, sortConfig, handleSortChange };
 };

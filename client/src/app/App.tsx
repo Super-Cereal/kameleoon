@@ -1,21 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { TablePage } from "@/pages/TablePage";
 
-import { Dashboard } from "@/pages/Dashboard";
-import { Finalize } from "@/pages/Finalize";
-import { Results } from "@/pages/Results";
+import { ReactQueryProvider } from "./ReactQueryProvider";
 
 import "./App.css";
 
-function App() {
+export const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/results/:testId" element={<Results />} />
-        <Route path="/finalize/:testId" element={<Finalize />} />
-      </Routes>
-    </BrowserRouter>
+    <ReactQueryProvider>
+      <TablePage />
+    </ReactQueryProvider>
   );
-}
-
-export default App;
+};

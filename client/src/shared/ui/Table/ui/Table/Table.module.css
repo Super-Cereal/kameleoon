@@ -1,7 +1,4 @@
-.tableContainer {
-  width: 100%;
-}
-
-.searchBar {
-  margin-bottom: 30px;
+.table {
+  margin: 32px 120px;
+  box-sizing: border-box;
 }

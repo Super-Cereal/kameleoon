@@ -1,7 +1,6 @@
 {
-  "name": "frontend-interview-task-api",
+  "name": "package",
   "version": "1.0.0",
-  "description": "API for the interview task for frontend developers",
   "main": "index.js",
   "scripts": {
     "start": "json-server -c ./config.json -w ./db.json"

@@ -1,67 +1,149 @@
 {
-  "sites": [
+  "authors": [
     {
       "id": 1,
-      "url": "https://market.company.com"
+      "name": "Pink Floyd",
+      "genre": "Progressive Rock",
+      "country": "UK",
+      "activeYears": "1965–1995, 2005, 2012–2014"
     },
     {
       "id": 2,
-      "url": "https://www.delivery.company.com"
+      "name": "Michael Jackson",
+      "genre": "Pop, R&B, Funk",
+      "country": "USA",
+      "activeYears": "1964–2009"
     },
     {
       "id": 3,
-      "url": "http://games.company.com"
-    }
-  ],
-  "tests": [
-    {
-      "id": 1,
-      "name": "Prototype of the new map",
-      "type": "CLASSIC",
-      "status": "PAUSED",
-      "siteId": 2
-    },
-    {
-      "id": 2,
-      "name": "Dark theme test",
-      "type": "MVT",
-      "status": "DRAFT",
-      "siteId": 3
-    },
-    {
-      "id": 3,
-      "name": "New Year's Sale",
-      "type": "MVT",
-      "status": "STOPPED",
-      "siteId": 1
+      "name": "The Beatles",
+      "genre": "Rock, Pop",
+      "country": "UK",
+      "activeYears": "1960–1970"
     },
     {
       "id": 4,
-      "name": "Order basket redesing",
-      "type": "CLASSIC",
-      "status": "ONLINE",
-      "siteId": 1
+      "name": "AC/DC",
+      "genre": "Hard Rock, Blues Rock",
+      "country": "Australia",
+      "activeYears": "1973–present"
     },
     {
       "id": 5,
-      "name": "Spring promotion",
-      "type": "SERVER_SIDE",
-      "status": "DRAFT",
-      "siteId": 2
+      "name": "Fleetwood Mac",
+      "genre": "Rock, Pop",
+      "country": "UK/USA",
+      "activeYears": "1967–present"
     },
     {
       "id": 6,
-      "name": "Prototype of a new header",
-      "type": "SERVER_SIDE",
-      "status": "ONLINE",
-      "siteId": 3
+      "name": "Nirvana",
+      "genre": "Grunge, Alternative Rock",
+      "country": "USA",
+      "activeYears": "1987–1994"
     },
     {
       "id": 7,
-      "name": "New Year's Sale Copy 1",
-      "type": "MVT",
-      "status": "DRAFT",
-      "siteId": 1
+      "name": "Led Zeppelin",
+      "genre": "Hard Rock, Blues Rock",
+      "country": "UK",
+      "activeYears": "1968–1980"
+    },
+    {
+      "id": 8,
+      "name": "Eagles",
+      "genre": "Rock, Country Rock",
+      "country": "USA",
+      "activeYears": "1971–1980, 1994–present"
+    },
+    {
+      "id": 9,
+      "name": "Bruce Springsteen",
+      "genre": "Rock, Folk Rock",
+      "country": "USA",
+      "activeYears": "1972–present"
+    }
+  ],
+  "records": [
+    {
+      "id": 1,
+      "name": "The Dark Side of the Moon",
+      "description": "Legendary album by Pink Floyd, a masterpiece of progressive rock.",
+      "price": 49.99,
+      "year": 1973,
+      "authorId": 1
+    },
+    {
+      "id": 2,
+      "name": "Thriller",
+      "description": "Best-selling album of all time by Michael Jackson.",
+      "price": 39.99,
+      "year": 1982,
+      "authorId": 2
+    },
+    {
+      "id": 3,
+      "name": "Abbey Road",
+      "description": "The Beatles' iconic album featuring hits like 'Come Together'.",
+      "price": 45.5,
+      "year": 1969,
+      "authorId": 3
+    },
+    {
+      "id": 4,
+      "name": "Back in Black",
+      "description": "AC/DC's legendary hard rock album with unforgettable riffs.",
+      "price": 34.99,
+      "year": 1980,
+      "authorId": 4
+    },
+    {
+      "id": 5,
+      "name": "Rumours",
+      "description": "Fleetwood Mac's classic with hits like 'Go Your Own Way'.",
+      "price": 42.75,
+      "year": 1977,
+      "authorId": 5
+    },
+    {
+      "id": 6,
+      "name": "Nevermind",
+      "description": "Nirvana's breakthrough album that defined the grunge era.",
+      "price": 37.99,
+      "year": 1991,
+      "authorId": 6
+    },
+    {
+      "id": 7,
+      "name": "The Wall",
+      "description": "Pink Floyd's rock opera exploring themes of isolation and rebellion.",
+      "price": 52.25,
+      "year": 1979,
+      "authorId": 1
+    },
+    {
+      "id": 8,
+      "name": "Led Zeppelin IV",
+      "description": "Featuring 'Stairway to Heaven', one of the greatest rock albums ever.",
+      "price": 47.5,
+      "year": 1971,
+      "authorId": 7
+    },
+    {
+      "id": 9,
+      "name": "Hotel California",
+      "description": "The Eagles' iconic album with the legendary title track.",
+      "price": 41.99,
+      "year": 1976,
+      "authorId": 8
+    },
+    {
+      "id": 10,
+      "name": "Born to Run",
+      "description": "Bruce Springsteen's epic album that launched him to superstardom.",
+      "price": 38.75,
+      "year": 1975,
+      "authorId": 9
     }
   ]
 }

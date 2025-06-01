@@ -1,23 +1,25 @@
 .headRow {
-  display: flex;
+  display: grid;
+  padding: 0 12px;
+  margin-bottom: 10px;
 }
 
 .headCell {
   text-align: left;
-  font-weight: 500;
-  font-size: var(--font-size-title-secondary);
-  color: var(--font-color-title-secondary);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #FF1493;
 }
 
 .button {
   display: flex;
   align-items: center;
+  padding-left: 16px;
 }
 
 .button_sortable {
-  line-height: 1.5;
   cursor: pointer;
-  padding: 0 15px;
 }
 
 .icon {

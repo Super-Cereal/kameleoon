@@ -1,9 +1,9 @@
 import cx from "classnames";
 
-import { A11yButton } from "@/shared/ui/A11yButton";
 import { IconChevron } from "@/shared/ui/Icon";
 
-import type { IColumn, ISortConfig } from "../../lib/types";
+import type { IColumn } from "../../lib/types";
+import type { ISortConfig } from "../../lib/useSort";
 
 import styles from "./HeadRow.module.css";
 
@@ -18,15 +18,17 @@ export const HeadRow = <ITableItem extends object>({
   sortConfig,
   handleSortChange,
 }: IProps<ITableItem>) => {
+  const gridTemplateColumns = columnsConfig.reduce((acc, column) => `${acc} ${column.widthFraction}fr`, "");
+
   return (
-    <div role="row" className={styles.headRow}>
+    <div className={styles.headRow} style={{ gridTemplateColumns }}>
       {columnsConfig.map(({ key, title, sortable }) => {
         const handleClick = sortable ? () => handleSortChange(key) : undefined;
 
         let icon: React.ReactNode = null;
         if (sortable && sortConfig?.key === key) {
           icon =
-            sortConfig?.direction === "asc" ? (
+            sortConfig.direction === "asc" ? (
               <IconChevron className={cx(styles.icon, styles.icon_asc)} />
             ) : (
               <IconChevron className={cx(styles.icon, styles.icon_desc)} />
@@ -34,14 +36,11 @@ export const HeadRow = <ITableItem extends object>({
         }
 
         return (
-          <div role="columnheader" className={styles.headCell} key={String(key)}>
-            <A11yButton
-              className={cx(styles.button, sortable && styles.button_sortable)}
-              onClick={handleClick}
-            >
+          <div className={styles.headCell} key={String(key)}>
+            <span className={cx(styles.button, sortable && styles.button_sortable)} onClick={handleClick}>
               {title.toUpperCase()}
               {icon}
-            </A11yButton>
+            </span>
           </div>
         );
       })}

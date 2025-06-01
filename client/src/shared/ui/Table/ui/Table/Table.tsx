@@ -1,16 +1,11 @@
-import { useRef } from "react";
-import cx from "classnames";
-
-import type { IColumn, ISortConfig } from "../../lib/types";
+import type { IColumn } from "../../lib/types";
 import { useSort } from "../../lib/useSort";
-import { useFilter } from "../../lib/useFilter";
 
-import { EmptyState } from "../EmptyState/EmptyState";
-import { SearchBar } from "../SearchBar/SearchBar";
 import { Row } from "../Row/Row";
 import { HeadRow } from "../HeadRow/HeadRow";
 
 import styles from "./Table.module.css";
+import { Loading } from "@/shared/ui/Loading";
 
 interface IProps<ITableItem> {
   items: ITableItem[];
@@ -22,79 +17,26 @@ interface IProps<ITableItem> {
     container?: string;
     table?: string;
   };
-
-  RowComponent?: React.ComponentType<{
-    item: ITableItem;
-    columnsConfig: IColumn<ITableItem>[];
-  }>;
-  HeadRowComponent?: React.ComponentType<{
-    columnsConfig: IColumn<ITableItem>[];
-    sortConfig: ISortConfig<ITableItem> | null;
-    handleSortChange: (key: keyof ITableItem) => void;
-  }>;
 }
 
-export const Table = <ITableItem extends object>({
-  items,
-  primaryKey,
-  columnsConfig,
-  withFilterBy,
-  entityName,
-  classNames,
+export const Table = <ITableItem extends object>({ items, primaryKey, columnsConfig }: IProps<ITableItem>) => {
+  const { sortedItems, sortConfig, handleSortChange } = useSort(items);
 
-  RowComponent = Row,
-  HeadRowComponent = HeadRow,
-}: IProps<ITableItem>) => {
-  const { filteredItems, filterTextView, handleFilterChange } = useFilter(items, withFilterBy);
-  const {
-    sortedItems: filteredAndSortedItems,
-    sortConfigView,
-    handleSortChange,
-  } = useSort(filteredItems, columnsConfig);
-
-  const filterInputRef = useRef<HTMLInputElement>(null);
-
-  let content = null;
   if (!items.length) {
-    content = "loading...";
-  } else if (!filteredAndSortedItems.length) {
-    content = <EmptyState filterInputRef={filterInputRef} handleFilterChange={handleFilterChange} />;
-  } else {
-    content = (
-      <div role="table" className={cx(styles.table, classNames?.table)}>
-        <div role="rowgroup">
-          <HeadRowComponent
-            columnsConfig={columnsConfig}
-            sortConfig={sortConfigView}
-            handleSortChange={handleSortChange}
-          />
-        </div>
-        <div role="rowgroup">
-          {filteredAndSortedItems.map((item) => (
-            <RowComponent key={String(item[primaryKey])} item={item} columnsConfig={columnsConfig} />
-          ))}
-        </div>
+    return (
+      <div className={styles.tableContainer}>
+        <Loading />
       </div>
     );
   }
 
-  const searchBarCaption = `${filteredAndSortedItems.length} ${entityName}${
-    filteredAndSortedItems.length === 1 ? "" : "s"
-  }`;
-
   return (
-    <div className={cx(styles.tableContainer, classNames?.container)}>
-      {withFilterBy && (
-        <SearchBar
-          caption={searchBarCaption}
-          inputRef={filterInputRef}
-          value={filterTextView}
-          onChange={handleFilterChange}
-          className={styles.searchBar}
-        />
-      )}
+    <div className={styles.table}>
+      <HeadRow columnsConfig={columnsConfig} sortConfig={sortConfig} handleSortChange={handleSortChange} />
 
-      {content}
+      {sortedItems.map((item) => (
+        <Row key={String(item[primaryKey])} item={item} columnsConfig={columnsConfig} />
+      ))}
     </div>
   );
 };
